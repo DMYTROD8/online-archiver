@@ -116,12 +116,31 @@
 <script type="text/javascript">
     var control = document.getElementById("your-files");
     var url = window.location.href + "download?file=";
-    control.addEventListener("change", function (event) {
+
+    function linkCreate(response) {
+        var placeToInsert = document.getElementById("res-wrap");
+        document.getElementById("your-files").value = "";
+
+        if (response.response == 0) {
+            var htmlInsert = '<hr class="my-4"><a href="' + url + response.link + '">Download archive</a>';
+            placeToInsert.innerHTML = "";
+            placeToInsert.insertAdjacentHTML('afterbegin', htmlInsert);
+        } else if (response.response == 2) {
+            var htmlInsert = '<hr class="my-4"><span class="oi oi-warning">Something went wrong! Try Again.</span>';
+            placeToInsert.innerHTML = "";
+            placeToInsert.insertAdjacentHTML('afterbegin', htmlInsert);
+        }
+    }
+
+    function waitLinkCreate() {
         var placeToInsert = document.getElementById("res-wrap");
         placeToInsert.innerHTML = "";
         var htmlInsert = '<hr class="my-4"><span class="oi oi-clock"></span>';
         placeToInsert.insertAdjacentHTML('afterbegin', htmlInsert);
+    }
 
+    control.addEventListener("change", function (event) {
+        waitLinkCreate();
         var i = 0;
         var files = control.files;
         var len = files.length;
@@ -136,21 +155,13 @@
         }
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
-                document.getElementById("your-files").value = "";
-                if (xhr.response.response == 0) {
-                    var htmlInsert = '<hr class="my-4"><a href="' + url + xhr.response.link + '">Download archive</a>';
-                    placeToInsert.innerHTML = "";
-                    placeToInsert.insertAdjacentHTML('afterbegin', htmlInsert);
-                } else if(xhr.response.response == 2){
-                    var htmlInsert = '<hr class="my-4"><span class="oi oi-warning">Something went wrong! Try Again.</span>';
-                    placeToInsert.innerHTML = "";
-                    placeToInsert.insertAdjacentHTML('afterbegin', htmlInsert);
-                }
+                linkCreate(xhr.response);
             }
         }
         xhr.open("post", "/upload", true);
         xhr.responseType = "json";
         xhr.send(req);
+
     }, false);
 </script>
 </body>
