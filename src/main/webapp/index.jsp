@@ -96,14 +96,14 @@
             <hr>
             <div class="jumbotron">
                 <p class="lead" style="text-align: center;">Select all the files you wish to archive, wait a few moments
-                    and click "Save Zip File" to save the archive to your local drive </p>
+                    and click "Download archive" to save the archive to your local drive</p>
                 <hr class="my-4">
                 <div id="btn-wrap" class="click-btn-wrap">
                     <div class="click-butt">
                         <span> Click here</span>
                         <input id="your-files" type="file" multiple class="form-control"
                                placeholder="">
-                        <span>to select an archive from your computer</span>
+                        <span>to select the files from your computer</span>
                     </div>
                 </div>
                 <div id="res-wrap" align="center">
@@ -140,6 +140,10 @@
                 //alert(xhr.response.link);
                 if (xhr.response.response == 0) {
                     var htmlInsert = '<hr class="my-4"><a href="' + url + xhr.response.link + '">Download archive</a>';
+                    placeToInsert.innerHTML = "";
+                    placeToInsert.insertAdjacentHTML('afterbegin', htmlInsert);
+                } else if(xhr.response.response == 2){
+                    var htmlInsert = '<hr class="my-4"><span class="oi oi-warning">Something went wrong! Try Again.</span>';
                     placeToInsert.innerHTML = "";
                     placeToInsert.insertAdjacentHTML('afterbegin', htmlInsert);
                 }

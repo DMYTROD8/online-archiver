@@ -61,7 +61,7 @@ public class FilesToZipServlet extends HttpServlet {
             uploadedFiles = upload.parseRequest(req);
             parseFiles(req, resp, repository, uploadedFiles);
         } catch (FileUploadException e) {
-            srvResp.sendResponse(resp, "response:1");
+            srvResp.sendResponse(resp, "response:2");
             e.printStackTrace();
         }
 
