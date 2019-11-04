@@ -16,19 +16,8 @@
             background-color: #FFCC00;
         }
 
-        em {
-            display: block;
-            text-align: center;
-            color: #a90329;
-            visibility: hidden;
-            margin-top: 6px;
-            padding: 0 1px;
-            font-style: normal;
-            font-size: 12px;
-        }
-
         .click-btn-wrap {
-            width: 435px;
+            width: 400px;
             margin: 0 auto;
         }
 
@@ -36,8 +25,7 @@
             background-image: -moz-linear-gradient(90deg, rgb(68, 125, 188) 0%, rgb(68, 125, 188) 51%, rgb(51, 147, 207) 52%, rgb(58, 152, 209) 100%);
             background-image: -webkit-linear-gradient(90deg, rgb(68, 125, 188) 0%, rgb(68, 125, 188) 51%, rgb(51, 147, 207) 52%, rgb(58, 152, 209) 100%);
             background-image: -ms-linear-gradient(90deg, rgb(68, 125, 188) 0%, rgb(68, 125, 188) 51%, rgb(51, 147, 207) 52%, rgb(58, 152, 209) 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#3e8ec9', EndColorStr='#447dbc');
-            width: 435px;
+            width: 400px;
             height: 94px;
             position: relative;
             overflow: hidden;
@@ -55,7 +43,7 @@
             position: absolute;
             top: -20px;
             left: 0;
-            width: 435px;
+            width: 400px;
             height: 124px;
             z-index: 2;
             opacity: 0;
@@ -92,7 +80,9 @@
 <div class="container h-100">
     <div class="row h-100">
         <div class="col-sm-8 col-md-8 col-xl-8 my-5 mx-auto">
-            <h1 class="text-center"><span class="oi oi-file"></span></h1>
+            <h1 class="text-center">
+                <span class="oi oi-file"></span>
+            </h1>
             <hr>
             <div class="jumbotron">
                 <p class="lead" style="text-align: center;">Select all the files you wish to archive, wait a few moments
@@ -100,7 +90,7 @@
                 <hr class="my-4">
                 <div id="btn-wrap" class="click-btn-wrap">
                     <div class="click-butt">
-                        <span> Click here</span>
+                        <span>Click here</span>
                         <input id="your-files" type="file" multiple class="form-control"
                                placeholder="">
                         <span>to select the files from your computer</span>
