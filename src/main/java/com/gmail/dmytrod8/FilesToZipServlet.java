@@ -110,7 +110,6 @@ public class FilesToZipServlet extends HttpServlet {
                     em.persist(c);
                     em.getTransaction().commit();
                     srvResp.sendResponse(resp, "response:0", "link:" + zipName);
-                    //viewClients();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                     em.getTransaction().rollback();
@@ -125,15 +124,6 @@ public class FilesToZipServlet extends HttpServlet {
             return;
         }
     }
-
-    private static void viewClients() {
-        Query query = em.createQuery("SELECT c FROM Archive c", Archive.class);
-        List<Archive> list = (List<Archive>) query.getResultList();
-
-        for (Archive c : list)
-            System.out.println(c);
-    }
-
 
     private void getAllArchives(HttpServletResponse resp) throws IOException {
         try {
