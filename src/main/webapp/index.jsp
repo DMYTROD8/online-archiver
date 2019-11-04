@@ -137,7 +137,6 @@
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 document.getElementById("your-files").value = "";
-                //alert(xhr.response.link);
                 if (xhr.response.response == 0) {
                     var htmlInsert = '<hr class="my-4"><a href="' + url + xhr.response.link + '">Download archive</a>';
                     placeToInsert.innerHTML = "";
@@ -152,8 +151,6 @@
         xhr.open("post", "/upload", true);
         xhr.responseType = "json";
         xhr.send(req);
-        //.document.location.reload();
-
     }, false);
 </script>
 </body>
